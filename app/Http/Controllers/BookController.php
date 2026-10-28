@@ -11,6 +11,7 @@ class BookController extends Controller
     {
         // Mengambil semua data dari tabel books di database
         $books = Book::all();
-        return view('book.index', compact('books'));
+        // Mengubah output dari view menjadi format JSON
+        return response()->json($books);
     }
 }

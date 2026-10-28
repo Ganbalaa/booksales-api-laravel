@@ -11,6 +11,7 @@ class AuthorController extends Controller
     {
         // Mengambil semua data dari tabel authors di database
         $authors = Author::all();
-        return view('author.index', compact('authors'));
+        // Mengubah output dari view menjadi format JSON
+        return response()->json($authors);
     }
 }
