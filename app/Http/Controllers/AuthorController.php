@@ -14,4 +14,13 @@ class AuthorController extends Controller
         // Mengubah output dari view menjadi format JSON
         return response()->json($authors);
     }
+    public function store(Request $request)
+    {
+        $author = Author::create($request->all());
+        
+        return response()->json([
+            'message' => 'Data Author berhasil ditambahkan!',
+            'data' => $author
+        ], 201); 
+    }
 }

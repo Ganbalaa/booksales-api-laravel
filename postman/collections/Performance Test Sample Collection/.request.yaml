@@ -1,0 +1,14 @@
+$kind: http-request
+name: ""
+url: http://127.0.0.1:8000/api/genres
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\": \"Komedi\",\r
+
+    \    \"description\": \"Buku yang berisi cerita lucu dan menghibur.\"\r
+
+    }"
+order: 1000

@@ -7,12 +7,25 @@ use App\Models\Genre; // Mengimpor Model Genre
 
 class GenreController extends Controller
 {
+    // Fitur Read All Data
     public function index()
     {
-        // Mengambil data array dari Model
-        $genres = Genre::getAllGenres();
+        // Mengambil data dari database
+        $genres = Genre::all();
         
-        // Mengarahkan ke file view (genre/index.blade.php) dan membawa data $genres
-        return view('genre.index', compact('genres'));
+        // Mengarahkan output menjadi JSON
+        return response()->json($genres);
+    }
+
+    // Fitur Create Data Baru
+    public function store(Request $request)
+    {
+        // Menyimpan data ke database
+        $genre = Genre::create($request->all());
+        
+        return response()->json([
+            'message' => 'Data Genre berhasil ditambahkan!',
+            'data' => $genre
+        ], 201); // 201 adalah status code HTTP untuk Created
     }
 }
