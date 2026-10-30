@@ -10,13 +10,9 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Route untuk Author
-Route::get('/authors', [AuthorController::class, 'index']);
-Route::post('/authors', [AuthorController::class, 'store']); // Route baru untuk Create
-
-// Route untuk Genre
-Route::get('/genres', [GenreController::class, 'index']);
-Route::post('/genres', [GenreController::class, 'store']); // Route baru untuk Create
+// Route API Resource untuk Author dan Genre
+Route::apiResource('authors', AuthorController::class);
+ Route::apiResource('genres', GenreController::class);
 
 // Route untuk Book
 Route::get('/books', [BookController::class, 'index']);
